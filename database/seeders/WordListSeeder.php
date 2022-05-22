@@ -22,7 +22,10 @@ class WordListSeeder extends Seeder
         ]);
 
         foreach ($this->getSampleWords() as $word) {
-            Word::factory()->create(['name' => $word]);
+            Word::factory()->create([
+                'name' => $word,
+                'word_list_id' => $wordList->id
+            ]);
         }
     }
 

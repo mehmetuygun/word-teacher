@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * App\Models\Word
@@ -22,4 +23,14 @@ use Illuminate\Database\Eloquent\Model;
 class Word extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'word_id', 'word_list_id'];
+
+    /**
+     * @return BelongsTo
+     */
+    public function wordList(): BelongsTo
+    {
+        return $this->belongsTo(WordList::class);
+    }
 }

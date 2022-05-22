@@ -12,10 +12,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 145);
-            $table->foreignId('word_list_id')->constrained();
+            $table->string('word', 150)->nullable();
+            $table->boolean('is_true');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('word_id')->constrained();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::dropIfExists('scores');
     }
 };

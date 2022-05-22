@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\WordList
@@ -27,4 +28,14 @@ use Illuminate\Database\Eloquent\Model;
 class WordList extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'user_id'];
+
+    /**
+     * @return HasMany
+     */
+    public function words(): HasMany
+    {
+        return $this->hasMany(Word::class);
+    }
 }
